@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Web Application</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+</head>
+<body class="centered-wrapper">
+    <center>
+        <fieldset style="width:380px">
+            <legend><h1>Login</h1></legend> 
+    <form id="loginForm" onsubmit="return handleLogin()">
+       <h3 style="color:aliceblue"> <strong><label for="username">Username:</label></strong>
+        <input type="text" id="username" name="username" required><br>
+        <strong><label for="password">Password:</label></strong>
+        <input type="password" id="password" name="password" required><br>
+        <button type="submit">Submit</button>
+        <button id="register">Register</button>
+        </h3>
+    </form>
+</center> 
+    <script src="script.js"></script>
+    <script>
+    document.getElementById('register').addEventListener('click', function() {
+        window.location.href = 'registration.html';
+    });
+
+    function handleLogin() {
+        console.log("handleLogin() function called");
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            if (validateLogin(username, password)) {
+                console.log("Login successful, redirecting...");
+                window.location.href = 'main.html';
+            } else {
+                alert('Invalid login credentials');
+            }
+            return false; // Prevent form submission
+        }
+    </script>
+</body>
+</html>
