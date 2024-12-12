@@ -1,0 +1,85 @@
+body {
+    background-color: #6ba089;
+    font-family: Arial, sans-serif;
+    color: #FFFFFF;
+}
+
+h1 {
+    color: beige;
+    font-size:xx-large;
+    font-family:'Times New Roman', Times, serif;
+}
+
+button {
+    background-color: #d651b7;
+    color: white;
+    padding: 18px 10px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+button:hover {
+    background-color: #4d072d;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.button-container {
+    display:flex; /* Use flexbox to place buttons side by side */
+    justify-content: center; /* Center the buttons horizontally */
+    margin-bottom: 20px; /* Optional: Add margin at the bottom */
+}
+.command-block p {
+    align-items: center;
+    display: block;
+  }
+.button-container button {
+    margin: 100 50px; /* Optional: Add margin between buttons */
+}
+
+
+.form-container {
+    background-color: #FFFFFF;
+    color: #000000;
+    padding: 20px;
+    border-radius: 10px;
+    width: 45%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    color: #4CAF50;
+}
+
+label, input, select, button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+input, select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    background-color: #0d236a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}

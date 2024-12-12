@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - Web Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body bgcolor="6B4226">
+    <center>
+        <strong><h1 style="color:rgb(67, 19, 47)">Registration Page</h1><hr></strong>
+        <div class="button-container">
+            <button onclick="showForm('studentForm')">Student Registration</button>
+            <button onclick="showForm('facultyForm')">Faculty Registration</button>
+        </div>
+    </center>
+    
+    <!-- Student Registration Form (hidden initially) -->
+    <div id="studentForm" style="display:none;">
+        <h2>Student Registration</h2>
+        <form method="POST" action="server.php?action=insert">
+            <label for="studentRoll">Roll Number:</label>
+            <input type="text" id="studentRoll" name="studentRoll" required><br>
+            
+            <label for="studentName">Name:</label>
+            <input type="text" id="studentName" name="studentName" required><br>
+            
+            <label for="studentBranch">Branch:</label>
+            <select id="studentBranch" name="studentBranch" required>
+                <option value="CSE">CSE</option>
+                <option value="IT">IT</option>
+                <option value="ECE">ECE</option>
+                <option value="EEE">EEE</option>
+            </select><br>
+            
+            <label for="studentDOB">DOB:</label>
+            <input type="date" id="studentDOB" name="studentDOB" required><br>
+            
+            <label for="studentMobile">Mobile Number:</label>
+            <input type="text" id="studentMobile" name="studentMobile" required><br>
+            
+            <button type="submit">Register Student</button>
+        </form>
+    </div>   
+
+    <!-- Faculty Registration Form (hidden initially) -->
+    <div id="facultyForm" style="display:none;">
+        <h2>Faculty Registration</h2>
+        <form id="facultyRegForm" action="/register-faculty" method="post" onsubmit="return handleFacultyRegistration()">
+            <label for="facultyName">UserName:</label>
+            <input type="username" id="facultyName" name="UserName" required><br>
+            <label for="facultyBranch">Branch:</label>
+            <select id="facultyBranch" name="facultyBranch">
+                <option value="CSE">CSE</option>
+                <option value="IT">IT</option>
+                <option value="ECE">ECE</option>
+                <option value="EEE">EEE</option>
+            </select><br>
+            <label for="facultyDOB">DOB:</label>
+            <input type="date" id="facultyDOB" name="facultyDOB" required><br>
+            <label for="facultyMobile">Mobile Number:</label>
+            <input type="text" id="facultyMobile" name="facultyMobile" required><br>
+            <label for="facultyPassword">Password:</label>
+            <input type="password" id="facultyPassword" name="facultyPassword" required><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function showForm(formId) {
+            var studentForm = document.getElementById('studentForm');
+            var facultyForm = document.getElementById('facultyForm');
+
+            if (formId === 'studentForm') {
+                studentForm.style.display = 'block';
+                facultyForm.style.display = 'none';
+            } else if (formId === 'facultyForm') {
+                studentForm.style.display = 'none';
+                facultyForm.style.display = 'block';
+            }
+        }
+
+        function handleStudentRegistration() {
+            var rollNumber = document.getElementById('studentRoll').value;
+            var name = document.getElementById('studentName').value;
+            var mobile = document.getElementById('studentMobile').value;
+
+            if (!/^\d+$/.test(rollNumber)) {
+                alert("Roll Number must be numeric.");
+                return false;
+            }
+
+            if (name.trim() === "") {
+                alert("Name cannot be empty.");
+                return false;
+            }
+
+            if (!/^\d{10}$/.test(mobile)) {
+                alert("Mobile Number must be 10 digits.");
+                return false;
+            }
+
+            return true; // Allow form submission if validation is successful
+        }
+
+        function handleFacultyRegistration() {
+            var name = document.getElementById('facultyName').value;
+            var mobile = document.getElementById('facultyMobile').value;
+            var password = document.getElementById('facultyPassword').value;
+
+            if (name.trim() === "") {
+                alert("Name cannot be empty.");
+                return false;
+            }
+
+            if (!/^\d{10}$/.test(mobile)) {
+                alert("Mobile Number must be 10 digits.");
+                return false;
+            }
+
+            if (password.trim() === "") {
+                alert("Password cannot be empty.");
+                return false;
+            }
+            // Redirect to main.html after successful form submission
+            setTimeout(function() {
+                window.location.href = 'main.html';
+            }, 1000);
+
+            return true; // Allow form submission if validation is successful
+        }
+
+        // Initially display the student form only
+        showForm('studentForm');
+    </script>
+</body>
+</html>
